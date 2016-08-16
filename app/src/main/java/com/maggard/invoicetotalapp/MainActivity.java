@@ -87,7 +87,26 @@ public class MainActivity extends AppCompatActivity
         discountPercentView.setText(percent.format(discountPercent)); //formatting the text and putting back into the widget
 
         NumberFormat discount = NumberFormat.getCurrencyInstance(); //create local variable
-        discountAmountView.setText(discount.format(discountAmountView)); //format the variable to a currency format
-        totalView.setText(discount.format(totalView)); //sends information back to the widget
+        discountAmountView.setText(discount.format(discountAmount)); //format the variable to a currency format
+        totalView.setText(discount.format(total)); //sends information back to the widget
+    }
+
+    @Override
+    protected void onPause() {
+        //save the instance variables
+        SharedPreferences.Editor editor = savedValues.edit();
+        editor.putString("subTotalString", subTotalString);
+        editor.commit();                         //submits the information
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //get instance variables from editor
+        subTotalString = savedValues.getString("subTotalString","");
+
+        //call calculate and display
+        calculateAndDisplay();
     }
 }
