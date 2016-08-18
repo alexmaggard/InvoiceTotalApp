@@ -4,17 +4,20 @@ import android.content.SharedPreferences;
 import android.preference.Preference;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
+import android.widget.Toast;
 
 import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity
         implements OnEditorActionListener {
 
+    private static final String TAG = "TipCalculatorActivity";
     //implement global variables of all text and editText boxes that will be changing
     private EditText subTotalEditText;
     private TextView discountPercentView;
@@ -51,6 +54,9 @@ public class MainActivity extends AppCompatActivity
                 actionId == EditorInfo.IME_ACTION_UNSPECIFIED){
             calculateAndDisplay();
         }
+
+        //another logging method to review action Id
+        Toast.makeText(getApplicationContext(), "action Id " + actionId, Toast.LENGTH_LONG).show();
         return false;
     }
     //calculate information and update screen
@@ -81,6 +87,9 @@ public class MainActivity extends AppCompatActivity
         //calculate discount
         float discountAmount = subTotal * discountPercent;
         float total = subTotal - discountAmount;
+
+        //log statement to see where issues are
+        Log.d(TAG,"total amount " + total);
 
         //now set the information back to the widget (display data on layout)
         NumberFormat percent = NumberFormat.getPercentInstance();   //create local variable
