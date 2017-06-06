@@ -11,11 +11,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
+//import android.widget.TextView.OnClickListener;
 
 import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity
-        implements OnEditorActionListener {
+        implements OnEditorActionListener/*, OnClickListener*/ {
 
     private static final String TAG = "TipCalculatorActivity";
     //implement global variables of all text and editText boxes that will be changing
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity
 
         //we have 1 editable text so we only need one action listener
         subTotalEditText.setOnEditorActionListener(this);
+        //resetButton.setOnClickListener(this);
 
         //create SharedPreference object
         savedValues = getSharedPreferences("SavedValues", MODE_PRIVATE);
