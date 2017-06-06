@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity
     private TextView discountPercentView;
     private TextView discountAmountView;
     private TextView totalView;
+    //private Button resetButton;
 
     private String subTotalString;
 
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity
         discountPercentView = (TextView) findViewById(R.id.discountPercentView);
         discountAmountView =(TextView) findViewById(R.id.discountAmountView);
         totalView = (TextView) findViewById(R.id.totalView);
+        //resetButton = (Button) findViewById(R.id.resetButton);
 
         //we have 1 editable text so we only need one action listener
         subTotalEditText.setOnEditorActionListener(this);
